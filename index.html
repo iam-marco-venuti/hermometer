@@ -1,0 +1,890 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.6">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Hermometer&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: 'Inter', sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>min-height: 100vh;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f0f2f5;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.iphone-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 375px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 812px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ffffff;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 30px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 0 0 8px #111827;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow: hidden;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.app-screen {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-grow: 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-y: auto;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#mainScreen.app-screen {</p>
+<p class="p1"><span class="Apple-converted-space">             </span>padding: 0;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.app-screen::-webkit-scrollbar { width: 6px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.app-screen::-webkit-scrollbar-thumb { background-color: #cbd5e1; border-radius: 3px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.app-screen::-webkit-scrollbar-track { background-color: #f8fafc; }</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.main-content-area {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-grow: 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 16px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-y: auto;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.main-content-area::-webkit-scrollbar { width: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.main-content-area::-webkit-scrollbar-thumb { background-color: #d1d5db; border-radius: 2px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.app-header-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 0.5rem;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#appIconDisplay {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 28px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 28px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-right: 8px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#appIconDisplay svg {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="date"], input[type="text"], select, input[type="color"] {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f8fafc; border: 1px solid #e2e8f0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0.65rem 0.75rem; border-radius: 0.375rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #334155; width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-sizing: border-box;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="color"] { padding: 0.25rem; height: 2.5rem; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="date"] { appearance: none; -webkit-appearance: none; position: relative; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="date"]::-webkit-calendar-picker-indicator { opacity: 0.6; cursor: pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="date"]:invalid::-webkit-datetime-edit { color: #94a3b8; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>select {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>appearance: none; -webkit-appearance: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-position: right 0.5rem center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-repeat: no-repeat;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-size: 1.5em 1.5em;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding-right: 2.5rem;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.slider-container { position: relative; margin-bottom: 0.5rem; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.slider-highlight-track {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: -8px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 10px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 10px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 6px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>pointer-events: none;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.highlight-marker {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: rgba(255, 0, 0, 0.5);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 3px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="range"] {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>-webkit-appearance: none; appearance: none; width: 100%; height: 8px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #e2e8f0; border-radius: 4px; outline: none; opacity: 0.7; transition: opacity .2s;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 10px;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="range"]:hover { opacity: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input[type="range"]::-webkit-slider-thumb {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>-webkit-appearance: none; appearance: none; width: 20px; height: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: #4f46e5; border-radius: 50%; cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid white; box-shadow: 0 0 5px rgba(0,0,0,0.2);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.mood-visuals-container { display: flex; justify-content: space-around; align-items: center; margin-bottom: 0.75rem; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.mood-visual-item { width: 72px; height: 72px; display: flex; justify-content: center; align-items: center; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.mood-visual-item svg { max-width: 100%; max-height: 100%; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.stylized-face-icon svg { border: 1px solid #e2e8f0; border-radius: 0.375rem; background-color: #f8fafc; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>#avatarPreviewSetup { width: 80px; height: 80px; margin: 10px auto; border: 1px solid #cbd5e1; border-radius: 0.5rem; background-color: #f1f5f9; display: flex; justify-content: center; align-items: center; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#avatarPreviewSetup svg { width: 100%; height: 100%; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.small-thermometer-icon { width: 24px; height: 60px; border: 2px solid #9ca3af; border-radius: 12px 12px 5px 5px; position: relative; background-color: #f8fafc; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.small-thermometer-bulb { width: 12px; height: 12px; background-color: #ef4444; border-radius: 50%; position: absolute; bottom: 2px; left: 50%; transform: translateX(-50%); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.small-thermometer-fill { width: 8px; background-color: #ef4444; position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); border-radius: 4px 4px 0 0; transition: height 0.3s ease, background-color 0.3s ease; height: 0%; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.menstruation-text { color: #6366f1; } .menstruation-bg { background-color: #e0e7ff80; } .menstruation-fill { background-color: #6366f1; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.follicular-text { color: #10b981; } .follicular-bg { background-color: #d1fae580; } .follicular-fill { background-color: #10b981; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.ovulation-text { color: #ec4899; } .ovulation-bg { background-color: #fce7f380; } .ovulation-fill { background-color: #ec4899; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.early-luteal-text { color: #0ea5e9; } .early-luteal-bg { background-color: #e0f2fe80; } .early-luteal-fill { background-color: #0ea5e9; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.late-luteal-text { color: #f59e0b; } .late-luteal-bg { background-color: #fef3c780; } .late-luteal-fill { background-color: #f59e0b; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.default-text { color: #64748b; } .default-bg { background-color: #f1f5f980; } .default-fill { background-color: #9ca3af; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary { background-color: #4f46e5; color: white; padding: 0.65rem 1.5rem; border-radius: 0.375rem; font-weight: 500; text-align: center; cursor: pointer; transition: background-color 0.2s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary:hover { background-color: #4338ca; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hidden { display: none !important; }<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>#hormoneGraphContainer, #recommendationSection { margin-top: 12px; padding: 10px; background-color: #f8fafc; border-radius: 0.5rem; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#hormoneGraphContainer h3, #recommendationSection h3 { font-size: 0.875rem; font-weight: 600; color: #334155; margin-bottom: 8px; text-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.graph-legend { display: flex; justify-content: center; gap: 12px; font-size: 0.75rem; margin-bottom: 8px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.legend-item { display: flex; align-items: center; gap: 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.legend-color-box { width: 10px; height: 10px; border-radius: 2px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#recommendationText { font-size: 0.8rem; color: #475569; line-height: 1.5; text-align: left; padding: 0 4px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.user-info-header { text-align: center; margin-bottom: 8px; color: #334155; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.user-info-header p { font-size: 0.8rem; line-height: 1.4; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.user-info-header .user-name { font-weight: 500; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.setup-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.span-col-2 { grid-column: span 2 / span 2; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.suggestion-checkboxes { margin-top: 0.75rem; margin-bottom: 0.5rem; display: flex; flex-direction: column; gap: 0.5rem; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.suggestion-checkboxes label { display: flex; align-items: center; font-size: 0.8rem; color: #374151; cursor: pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.suggestion-checkboxes input[type="checkbox"] { margin-right: 0.5rem; height: 1rem; width: 1rem; accent-color: #4f46e5; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* App Icon Selection Styles */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.app-icon-selection-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: grid;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 0.5rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #e2e8f0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 0.375rem;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.app-icon-option {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 60px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 60px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 2px solid transparent;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 0.375rem;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f8fafc;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.app-icon-option.selected {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-color: #4f46e5;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 0 0 2px #c7d2fe;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.app-icon-option svg {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="iphone-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="setupScreen" class="app-screen"&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;header class="text-center mb-6"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1 class="text-2xl font-bold text-slate-800"&gt;Welcome to Hermometer!&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-sm text-slate-500"&gt;Customize your settings &amp; avatar.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;section class="space-y-4 flex-grow"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="span-col-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="userName" class="block text-xs font-medium text-slate-700 mb-1"&gt;Your Name&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="text" id="userName" name="userName" placeholder="E.g., Alex"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="span-col-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="lmpDateSetup" class="block text-xs font-medium text-slate-700 mb-1"&gt;First Day of Last Menstruation&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="date" id="lmpDateSetup" name="lmpDateSetup"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-lg font-semibold text-slate-700 mt-4 pt-2 border-t border-slate-200 span-col-2"&gt;Avatar Customization&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="avatarPreviewSetup"&gt;&lt;svg viewBox="0 0 24 24"&gt;&lt;/svg&gt;&lt;/div&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="setup-grid"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="faceShape" class="block text-xs font-medium text-slate-700 mb-1"&gt;Face Shape&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="faceShape" name="faceShape"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="oval"&gt;Oval&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="round"&gt;Round&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="square"&gt;Square&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="skinTone" class="block text-xs font-medium text-slate-700 mb-1"&gt;Skin Tone&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="color" id="skinTone" name="skinTone" value="#F0C0A0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="eyeColor" class="block text-xs font-medium text-slate-700 mb-1"&gt;Eye Color&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="color" id="eyeColor" name="eyeColor" value="#5080C0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="eyeShape" class="block text-xs font-medium text-slate-700 mb-1"&gt;Eye Shape&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;select id="eyeShape" name="eyeShape"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="almond"&gt;Almond&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="round_eyes"&gt;Round&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="upturned"&gt;Upturned&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="span-col-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="lipShape" class="block text-xs font-medium text-slate-700 mb-1"&gt;Lip Shape&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                         </span>&lt;select id="lipShape" name="lipShape"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="natural"&gt;Natural&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="full_lips"&gt;Full&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;option value="thin_lips"&gt;Thin&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 class="text-lg font-semibold text-slate-700 mt-4 pt-2 border-t border-slate-200 span-col-2"&gt;Choose App Icon&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="appIconSelectionContainer" class="app-icon-selection-container span-col-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>{/* App Icon options will be injected here by JS */}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button id="startTrackingBtn" class="btn-primary w-full mt-4 span-col-2"&gt;Save &amp; Start&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">             </span>&lt;footer class="text-center mt-auto pt-4"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p class="text-xs text-slate-400"&gt;Your data is stored locally.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="mainScreen" class="app-screen hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="main-content-area"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;header class="app-header-container"&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="appIconDisplay"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>{/* SVG Icon will be injected here by JS */}</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h1 class="text-xl font-bold text-slate-800"&gt;Hermometer&lt;/h1&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/header&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="userInfoHeader" class="user-info-header"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;section class="space-y-3 mb-3"&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label for="outlookDateSlider" class="block text-xs font-medium text-slate-700 mb-1"&gt;Outlook for Date:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="slider-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div id="sliderHighlightTrack" class="slider-highlight-track"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;input type="range" id="outlookDateSlider" name="outlookDateSlider" min="0" max="60" value="0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div id="outlookDateDisplay" class="text-xs text-slate-500 text-center"&gt;Today&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="suggestionCheckboxesContainer" class="suggestion-checkboxes hidden"&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label id="dinnerDateLabel"&gt;&lt;input type="checkbox" id="dinnerDateCheckbox"&gt; Suggest: Best for dinner out&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;label id="bizTripLabel"&gt;&lt;input type="checkbox" id="bizTripCheckbox"&gt; Suggest: Best for business trip&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;section id="output-section" class="text-center p-3 rounded-lg default-bg mb-3"&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="mood-visuals-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div id="smallThermometerDisplay" class="mood-visual-item"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div id="avatarDisplay" class="mood-visual-item stylized-face-icon"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div id="phaseIconDisplay" class="mood-visual-item"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="moodTextDisplay"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="my-3"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="mainSuggestionTone" class="block text-xs font-medium text-slate-700 mb-1"&gt;Suggestion Tone:&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;select id="mainSuggestionTone" name="mainSuggestionTone" class="w-full"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="easygoing"&gt;Easygoing &amp; Supportive&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="scientific"&gt;Scientific Insights&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;option value="dude_mode"&gt;Dude Mode&lt;/option&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/select&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;section id="recommendationSection"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;Support &amp; Connection Tips&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="recommendationText"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;section id="hormoneGraphContainer"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;Hormone Levels Overview&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="graph-legend"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="legend-item"&gt;&lt;span class="legend-color-box" style="background-color: #fb7185;"&gt;&lt;/span&gt;Estrogen&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="legend-item"&gt;&lt;span class="legend-color-box" style="background-color: #38bdf8;"&gt;&lt;/span&gt;Progesterone&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="legend-item"&gt;&lt;span class="legend-color-box" style="background-color: #a78bfa;"&gt;&lt;/span&gt;Testosterone&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;svg id="hormoneChart" width="100%" height="120" viewBox="0 0 300 120"&gt;&lt;/svg&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;footer class="text-center mt-auto pt-2"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                     </span>&lt;button id="resetSetupBtn" class="text-xs text-indigo-600 hover:text-indigo-800 underline mb-1"&gt;Settings &amp; Avatar&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p class="text-xs text-slate-400"&gt;Disclaimer: Generalized info.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/footer&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// DOM Elements</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const setupScreen = document.getElementById('setupScreen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const mainScreen = document.getElementById('mainScreen');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const userNameInput = document.getElementById('userName');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const lmpDateSetupInput = document.getElementById('lmpDateSetup');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// suggestionToneSelect (for setup) is removed, mainSuggestionTone is new</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const mainSuggestionToneSelect = document.getElementById('mainSuggestionTone');<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const startTrackingBtn = document.getElementById('startTrackingBtn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const resetSetupBtn = document.getElementById('resetSetupBtn');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const userInfoHeaderDiv = document.getElementById('userInfoHeader');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const appIconDisplay = document.getElementById('appIconDisplay');<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const appIconSelectionContainer = document.getElementById('appIconSelectionContainer');<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const avatarPreviewSetupDiv = document.getElementById('avatarPreviewSetup');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const faceShapeSelect = document.getElementById('faceShape');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const skinToneInput = document.getElementById('skinTone');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const eyeColorInput = document.getElementById('eyeColor');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const eyeShapeSelect = document.getElementById('eyeShape');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const lipShapeSelect = document.getElementById('lipShape');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const outlookDateSlider = document.getElementById('outlookDateSlider');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const outlookDateDisplay = document.getElementById('outlookDateDisplay');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const sliderHighlightTrack = document.getElementById('sliderHighlightTrack');<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const suggestionCheckboxesContainer = document.getElementById('suggestionCheckboxesContainer');<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const dinnerDateCheckbox = document.getElementById('dinnerDateCheckbox');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const bizTripCheckbox = document.getElementById('bizTripCheckbox');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const dinnerDateLabel = document.getElementById('dinnerDateLabel');<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const bizTripLabel = document.getElementById('bizTripLabel');<span class="Apple-converted-space"> </span></p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const outputSection = document.getElementById('output-section');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const smallThermometerDisplay = document.getElementById('smallThermometerDisplay');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const avatarDisplay = document.getElementById('avatarDisplay');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const phaseIconDisplay = document.getElementById('phaseIconDisplay');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const moodTextDisplay = document.getElementById('moodTextDisplay');</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const hormoneChartSVG = document.getElementById('hormoneChart');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const recommendationTextDiv = document.getElementById('recommendationText');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentUserName = "User";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentLmpDate = null;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentSuggestionTone = "easygoing";</p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentSelectedAppIconKey = 'h_meter';<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let currentAvatarConfig = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>faceShape: 'oval', skinTone: '#F0C0A0',</p>
+<p class="p1"><span class="Apple-converted-space">            </span>eyeColor: '#5080C0', eyeShape: 'almond',</p>
+<p class="p1"><span class="Apple-converted-space">            </span>lipShape: 'natural'</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>// --- App Icon SVGs (First 4 only) ---</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const appIcons = {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>h_meter: `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;rect x="4" y="4" width="5" height="20" rx="1.5" fill="#4A5568"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;rect x="19" y="4" width="5" height="20" rx="1.5" fill="#E2E8F0"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;rect x="20.5" y="10" width="2" height="10" rx="1" fill="#F56565"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;circle cx="21.5" cy="21" r="2.2" fill="#F56565"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;path d="M6.5 13.5 Q10.5 11.5 14 13.5 T21.5 13.5" stroke="#4FD1C5" stroke-width="2.5" fill="none" stroke-linecap="round"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                  </span>&lt;rect x="19.5" y="4.5" width="4" height="19" rx="1" fill="white" fill-opacity="0.2"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/svg&gt;`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cycle_dial: `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;circle cx="14" cy="14" r="12" stroke="#D1D5DB" stroke-width="1.5"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;path d="M14 2 A 12 12 0 0 1 22.48 5.51" stroke="#EC4899" stroke-width="2.5" fill="none"/&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;path d="M22.48 5.51 A 12 12 0 0 1 26 14" stroke="#F59E0B" stroke-width="2.5" fill="none"/&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;path d="M26 14 A 12 12 0 0 1 14 26" stroke="#6366F1" stroke-width="2.5" fill="none"/&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;path d="M14 26 A 12 12 0 0 1 2 14" stroke="#10B981" stroke-width="2.5" fill="none"/&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;path d="M2 14 A 12 12 0 0 1 14 2" stroke="#10B981" stroke-width="2.5" fill="none"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;rect x="12.5" y="10" width="3" height="8" rx="1" fill="#E2E8F0"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;rect x="13" y="12" width="2" height="5" rx="0.5" fill="#F56565"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;circle cx="14" cy="18.5" r="1.8" fill="#F56565"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/svg&gt;`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>venus_thermometer: `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;circle cx="14" cy="10" r="7" stroke="#4A5568" stroke-width="2"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;rect x="12.5" y="16" width="3" height="10" fill="#4A5568"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;rect x="6" y="22" width="16" height="3" fill="#4A5568"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;rect x="13" y="11" width="2" height="6" fill="#F56565" rx="0.5"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;circle cx="14" cy="10" r="2.5" fill="#F56565" /&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/svg&gt;`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>mood_bloom: `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;svg viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;path d="M14 2 C 10 2 6 6 6 10 C 6 14 10 18 14 18 C 18 18 22 14 22 10 C 22 6 18 2 14 2 Z" fill="#FBCFE8" opacity="0.7"/&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;path d="M14 2 C 18 2 22 6 22 10 L14 10 Z" fill="#A7F3D0" opacity="0.7"/&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;path d="M14 18 C 10 18 6 14 6 10 L14 10 Z" fill="#BFDBFE" opacity="0.7"/&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;path d="M6 10 C 6 6 10 2 14 2 L14 10 Z" fill="#FDE68A" opacity="0.7"/&gt;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;circle cx="14" cy="14" r="3" fill="white"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;circle cx="14" cy="14" r="1.5" fill="#EC4899"/&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/svg&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const cyclePhaseIcons = { /* ... (same as before) ... */<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>menstruation: `&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M20.93 11.93a9 9 0 0 0-17.86 0"&gt;&lt;/path&gt;&lt;path d="M12 2v4"&gt;&lt;/path&gt;&lt;path d="M12 18v4"&gt;&lt;/path&gt;&lt;path d="M4.93 4.93l2.83 2.83"&gt;&lt;/path&gt;&lt;path d="M16.24 16.24l2.83 2.83"&gt;&lt;/path&gt;&lt;path d="M2 12h4"&gt;&lt;/path&gt;&lt;path d="M18 12h4"&gt;&lt;/path&gt;&lt;path d="M4.93 19.07l2.83-2.83"&gt;&lt;/path&gt;&lt;path d="M16.24 7.76l2.83-2.83"&gt;&lt;/path&gt;&lt;circle cx="12" cy="12" r="3" fill="currentColor" opacity="0.3"&gt;&lt;/circle&gt;&lt;/svg&gt;`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>follicular: `&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M12 2a10 10 0 0 0-10 10c0 3.34 1.64 6.35 4.22 8.22"&gt;&lt;/path&gt;&lt;path d="M12 22a10 10 0 0 0 10-10c0-3.34-1.64-6.35-4.22-8.22"&gt;&lt;/path&gt;&lt;path d="M12 6v12"&gt;&lt;/path&gt;&lt;path d="M16 10l-4 4-4-4"&gt;&lt;/path&gt;&lt;/svg&gt;`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>ovulation: `&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;circle cx="12" cy="12" r="3"&gt;&lt;/circle&gt;&lt;line x1="12" y1="2" x2="12" y2="6"&gt;&lt;/line&gt;&lt;line x1="12" y1="18" x2="12" y2="22"&gt;&lt;/line&gt;&lt;line x1="4.93" y1="4.93" x2="7.76" y2="7.76"&gt;&lt;/line&gt;&lt;line x1="16.24" y1="16.24" x2="19.07" y2="19.07"&gt;&lt;/line&gt;&lt;line x1="2" y1="12" x2="6" y2="12"&gt;&lt;/line&gt;&lt;line x1="18" y1="12" x2="22" y2="12"&gt;&lt;/line&gt;&lt;line x1="4.93" y1="19.07" x2="7.76" y2="16.24"&gt;&lt;/line&gt;&lt;line x1="16.24" y1="7.76" x2="19.07" y2="4.93"&gt;&lt;/line&gt;&lt;/svg&gt;`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'early-luteal': `&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M12 22A10 10 0 1 1 12 2a10 10 0 0 1 0 20z"&gt;&lt;/path&gt;&lt;path d="M12 8v8"&gt;&lt;/path&gt;&lt;path d="M8.5 14.5L12 11l3.5 3.5"&gt;&lt;/path&gt;&lt;/svg&gt;`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>'late-luteal': `&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"&gt;&lt;/path&gt;&lt;line x1="12" y1="9" x2="12" y2="13"&gt;&lt;/line&gt;&lt;line x1="12" y1="17" x2="12.01" y2="17"&gt;&lt;/line&gt;&lt;/svg&gt;`,</p>
+<p class="p1"><span class="Apple-converted-space">            </span>default: `&lt;svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"&gt;&lt;circle cx="12" cy="12" r="10"&gt;&lt;/circle&gt;&lt;/svg&gt;`</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function getFaceSVG(config, mood) { /* ... (same as before, no hair) ... */<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const { faceShape, skinTone, eyeColor, eyeShape, lipShape } = config;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const { eyeType, mouthType, eyebrowType } = mood;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let facePath = ''; let faceYOffset = 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>switch (faceShape) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'round': facePath = `&lt;circle cx="12" cy="${12 + faceYOffset}" r="9.5" fill="${skinTone}" stroke="${skinTone}" stroke-width="0.5"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'square': facePath = `&lt;rect x="2.5" y="${2.5 + faceYOffset}" width="19" height="19" rx="2" fill="${skinTone}" stroke="${skinTone}" stroke-width="0.5"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'oval': default: facePath = `&lt;ellipse cx="12" cy="12.5" rx="8" ry="9.5" fill="${skinTone}" stroke="${skinTone}" stroke-width="0.5"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let baseEyes = ''; const eyeY = 10.5;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>switch(eyeShape) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'round_eyes': baseEyes = `&lt;circle cx="8.5" cy="${eyeY}" r="2" fill="${eyeColor}"/&gt;&lt;circle cx="15.5" cy="${eyeY}" r="2" fill="${eyeColor}"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'upturned': baseEyes = `&lt;ellipse cx="8.5" cy="${eyeY}" rx="2.3" ry="1.7" transform="rotate(-15 8.5 ${eyeY})" fill="${eyeColor}"/&gt; &lt;ellipse cx="15.5" cy="${eyeY}" rx="2.3" ry="1.7" transform="rotate(-15 15.5 ${eyeY})" fill="${eyeColor}"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'almond': default: baseEyes = `&lt;ellipse cx="8.5" cy="${eyeY}" rx="2.4" ry="1.7" fill="${eyeColor}"/&gt;&lt;ellipse cx="15.5" cy="${eyeY}" rx="2.4" ry="1.7" fill="${eyeColor}"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let moodEyeOverlay = ''; const pupilColor = "#111827";<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>switch(eyeType) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'sleepy': moodEyeOverlay = `&lt;path d="M6 ${eyeY-0.5} Q8.5 ${eyeY-1.5} 11 ${eyeY-0.5} M13 ${eyeY-0.5} Q15.5 ${eyeY-1.5} 18 ${eyeY-0.5}" stroke="${skinTone}" stroke-width="3" fill="none"/&gt;`; break;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'sparkle': moodEyeOverlay = `&lt;circle cx="8" cy="${eyeY-0.5}" r="0.6" fill="white" opacity="0.9"/&gt;&lt;circle cx="15" cy="${eyeY-0.5}" r="0.6" fill="white" opacity="0.9"/&gt;`; break;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'sensitive': moodEyeOverlay = `&lt;path d="M7 ${eyeY+1.2} Q8.5 ${eyeY+0.5} 10 ${eyeY+1.2} M14 ${eyeY+1.2} Q15.5 ${eyeY+0.5} 17 ${eyeY+1.2}" stroke="${skinTone}" stroke-width="1.5" fill="none"/&gt;`; break;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>default: moodEyeOverlay = `&lt;circle cx="8.5" cy="${eyeY}" r="0.9" fill="${pupilColor}"/&gt;&lt;circle cx="15.5" cy="${eyeY}" r="0.9" fill="${pupilColor}"/&gt;`;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let lipPath = ''; const lipY = 17; const lipColor = mood.lipColor || "#E58C93";<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>switch(lipShape) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'full_lips': lipPath = `&lt;path d="M8 ${lipY-0.8} Q12 ${lipY+1.2} 16 ${lipY-0.8} M8 ${lipY-0.8} Q12 ${lipY-1.8} 16 ${lipY-0.8} Z" fill="${lipColor}" /&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'thin_lips': lipPath = `&lt;line x1="8.5" y1="${lipY}" x2="15.5" y2="${lipY}" stroke="${lipColor}" stroke-width="1.5"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'natural': default: lipPath = `&lt;path d="M8.5 ${lipY} Q12 ${lipY+0.6} 15.5 ${lipY} M8.5 ${lipY} Q12 ${lipY-0.6} 15.5 ${lipY} Z" fill="${lipColor}" /&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let moodMouthOverlay = ''; const expressionColor = mood.expressionLineColor || "#4B5563";<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">             </span>switch(mouthType) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'smile': moodMouthOverlay = `&lt;path d="M8.5 ${lipY-0.2} Q12 ${lipY+1.5} 15.5 ${lipY-0.2}" stroke="${expressionColor}" stroke-width="1.2" fill="none"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'flirty': moodMouthOverlay = `&lt;path d="M8.5 ${lipY} Q10 ${lipY+0.8} 12 ${lipY} Q14 ${lipY-0.8} 15.5 ${lipY}" stroke="${expressionColor}" stroke-width="1.2" fill="none"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'sad': moodMouthOverlay = `&lt;path d="M8.5 ${lipY+0.8} Q12 ${lipY-0.5} 15.5 ${lipY+0.8}" stroke="${expressionColor}" stroke-width="1.2" fill="none"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'neutral': default: moodMouthOverlay = lipPath; break;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (mouthType !== 'neutral') lipPath = '';<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let eyebrowPath = ''; const eyebrowY = eyeY - 3; const eyebrowColor = "#5B3A29";<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>switch(eyebrowType) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'raised': eyebrowPath = `&lt;path d="M6 ${eyebrowY-0.8} Q8.5 ${eyebrowY-2} 11 ${eyebrowY-0.8} M13 ${eyebrowY-0.8} Q15.5 ${eyebrowY-2} 18 ${eyebrowY-0.8}" stroke="${eyebrowColor}" stroke-width="1.5" fill="none"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'furrowed': eyebrowPath = `&lt;path d="M7.5 ${eyebrowY+0.5} Q9 ${eyebrowY-0.8} 10.5 ${eyebrowY+0.5} M13.5 ${eyebrowY+0.5} Q15 ${eyebrowY-0.8} 16.5 ${eyebrowY+0.5}" stroke="${eyebrowColor}" stroke-width="1.5" fill="none"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>case 'normal': default: eyebrowPath = `&lt;path d="M6.5 ${eyebrowY} Q8.5 ${eyebrowY-1.2} 10.5 ${eyebrowY} M13.5 ${eyebrowY} Q15.5 ${eyebrowY-1.2} 17.5 ${eyebrowY}" stroke="${eyebrowColor}" stroke-width="1.5" fill="none"/&gt;`; break;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return `&lt;svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"&gt;${facePath}${baseEyes}${moodEyeOverlay}${eyebrowPath}${lipPath}${moodMouthOverlay}&lt;/svg&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function formatDate(date) { return date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function addDays(date, days) { const result = new Date(date); result.setDate(result.getDate() + days); return result; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const graphWidth = 300; const graphHeight = 100;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>const graphPadding = { top: 15, right: 10, bottom: 20, left: 25 };</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function drawHormoneGraphBase() { /* ... (same as before, using improved paths) ... */<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>hormoneChartSVG.innerHTML = ''; const chartAreaWidth = graphWidth - graphPadding.left - graphPadding.right; const chartAreaHeight = graphHeight - graphPadding.top - graphPadding.bottom;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const xAxisLine = document.createElementNS("http://www.w3.org/2000/svg", "line"); xAxisLine.setAttribute("x1", graphPadding.left); xAxisLine.setAttribute("y1", graphHeight - graphPadding.bottom); xAxisLine.setAttribute("x2", graphWidth - graphPadding.right); xAxisLine.setAttribute("y2", graphHeight - graphPadding.bottom); xAxisLine.setAttribute("stroke", "#cbd5e1"); hormoneChartSVG.appendChild(xAxisLine);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let i = 0; i &lt;= 28; i += 7) { const tickX = graphPadding.left + (i / 28) * chartAreaWidth; const tick = document.createElementNS("http://www.w3.org/2000/svg", "line"); tick.setAttribute("x1", tickX); tick.setAttribute("y1", graphHeight - graphPadding.bottom); tick.setAttribute("x2", tickX); tick.setAttribute("y2", graphHeight - graphPadding.bottom + 4); tick.setAttribute("stroke", "#94a3b8"); hormoneChartSVG.appendChild(tick); if (i % 7 === 0) { const label = document.createElementNS("http://www.w3.org/2000/svg", "text"); label.setAttribute("x", tickX); label.setAttribute("y", graphHeight - graphPadding.bottom + 14); label.setAttribute("text-anchor", "middle"); label.setAttribute("font-size", "8px"); label.setAttribute("fill", "#64748b"); label.textContent = i === 0 ? "1" : i; hormoneChartSVG.appendChild(label); } }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const yAxisLine = document.createElementNS("http://www.w3.org/2000/svg", "line"); yAxisLine.setAttribute("x1", graphPadding.left); yAxisLine.setAttribute("y1", graphPadding.top); yAxisLine.setAttribute("x2", graphPadding.left); yAxisLine.setAttribute("y2", graphHeight - graphPadding.bottom); yAxisLine.setAttribute("stroke", "#cbd5e1"); hormoneChartSVG.appendChild(yAxisLine); const yLabelHigh = document.createElementNS("http://www.w3.org/2000/svg", "text"); yLabelHigh.setAttribute("x", graphPadding.left - 4); yLabelHigh.setAttribute("y", graphPadding.top + 5); yLabelHigh.setAttribute("text-anchor", "end"); yLabelHigh.setAttribute("font-size", "8px"); yLabelHigh.setAttribute("fill", "#64748b"); yLabelHigh.textContent = "High"; hormoneChartSVG.appendChild(yLabelHigh); const yLabelLow = document.createElementNS("http://www.w3.org/2000/svg", "text"); yLabelLow.setAttribute("x", graphPadding.left - 4); yLabelLow.setAttribute("y", graphHeight - graphPadding.bottom -2); yLabelLow.setAttribute("text-anchor", "end"); yLabelLow.setAttribute("font-size", "8px"); yLabelLow.setAttribute("fill", "#64748b"); yLabelLow.textContent = "Low"; hormoneChartSVG.appendChild(yLabelLow);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const scaleX = (day) =&gt; graphPadding.left + ((day - 1) / 27) * chartAreaWidth; const scaleY = (level) =&gt; graphHeight - graphPadding.bottom - (level / 100) * chartAreaHeight;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const estrogenData = [[1,10],[5,15],[7,25],[10,60],[12,85],[13,90],[14,70],[16,40],[20,50],[22,55],[24,45],[26,20],[28,10]]; const progesteroneData = [[1,5],[7,5],[13,10],[15,15],[18,50],[21,80],[23,70],[25,40],[28,5]]; const testosteroneData = [[1,10],[7,12],[12,20],[14,25],[16,20],[21,15],[28,10]];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function createPathFromData(data, color) { if (data.length &lt; 2) return; let pathData = `M ${scaleX(data[0][0])} ${scaleY(data[0][1])}`; for (let i = 1; i &lt; data.length; i++) { const prevX = scaleX(data[i-1][0]); const prevY = scaleY(data[i-1][1]); const currX = scaleX(data[i][0]); const currY = scaleY(data[i][1]); const cp1X = prevX + (currX - prevX) / 2; const cp1Y = prevY; const cp2X = prevX + (currX - prevX) / 2; const cp2Y = currY; pathData += ` C ${cp1X} ${cp1Y}, ${cp2X} ${cp2Y}, ${currX} ${currY}`; } const path = document.createElementNS("http://www.w3.org/2000/svg", "path"); path.setAttribute("d", pathData); path.setAttribute("stroke", color); path.setAttribute("stroke-width", "2"); path.setAttribute("fill", "none"); path.setAttribute("stroke-linecap", "round"); path.setAttribute("stroke-linejoin", "round"); hormoneChartSVG.appendChild(path); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>createPathFromData(estrogenData, "#fb7185"); createPathFromData(progesteroneData, "#38bdf8"); createPathFromData(testosteroneData, "#a78bfa");</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const indicatorLine = document.createElementNS("http://www.w3.org/2000/svg", "line"); indicatorLine.setAttribute("id", "graphIndicator"); indicatorLine.setAttribute("y1", graphPadding.top); indicatorLine.setAttribute("y2", graphHeight - graphPadding.bottom); indicatorLine.setAttribute("stroke", "#111827"); indicatorLine.setAttribute("stroke-width", "1.5"); indicatorLine.setAttribute("stroke-dasharray", "2,2"); hormoneChartSVG.appendChild(indicatorLine);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateGraphIndicator(cycleDay) { /* ... (same as before) ... */<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const indicator = document.getElementById('graphIndicator'); if (!indicator) return; const chartAreaWidth = graphWidth - graphPadding.left - graphPadding.right; const dayRatio = (cycleDay - 1) / 27; const xPos = graphPadding.left + dayRatio * chartAreaWidth; indicator.setAttribute("x1", xPos); indicator.setAttribute("x2", xPos);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateSmallThermometerVisual(phaseClassKey, cycleDay) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const thermometerIcon = `&lt;div class="small-thermometer-icon"&gt;&lt;div class="small-thermometer-fill"&gt;&lt;/div&gt;&lt;div class="small-thermometer-bulb"&gt;&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>smallThermometerDisplay.innerHTML = thermometerIcon;<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const fillElement = smallThermometerDisplay.querySelector('.small-thermometer-fill');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const bulbElement = smallThermometerDisplay.querySelector('.small-thermometer-bulb');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!fillElement || !bulbElement) return;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let fillPercent = 10;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let fillColorClass = 'default-fill';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (phaseClassKey === 'menstruation') { fillPercent = 10 + (cycleDay * 2); fillColorClass = 'menstruation-fill';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (phaseClassKey === 'follicular') { fillPercent = 25 + ((cycleDay - 5) * 5); fillColorClass = 'follicular-fill';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (phaseClassKey === 'ovulation') { fillPercent = 80 + ((cycleDay - 12) * 5); fillColorClass = 'ovulation-fill';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (phaseClassKey === 'early-luteal') { fillPercent = 75 - ((cycleDay - 15) * 2); fillColorClass = 'early-luteal-fill';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (phaseClassKey === 'late-luteal') { fillPercent = 50 - ((cycleDay - 22) * 6); fillColorClass = 'late-luteal-fill'; }</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>fillPercent = Math.max(5, Math.min(65, fillPercent));<span class="Apple-converted-space"> </span></p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>fillElement.style.height = `${fillPercent}%`;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const colorMap = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'menstruation-fill': '#6366f1', 'follicular-fill': '#10b981', 'ovulation-fill': '#ec4899',</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'early-luteal-fill': '#0ea5e9', 'late-luteal-fill': '#f59e0b', 'default-fill': '#9ca3af'</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const actualColor = colorMap[fillColorClass] || '#9ca3af';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>fillElement.style.backgroundColor = actualColor;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bulbElement.style.backgroundColor = actualColor;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function getRecommendation(phaseClassKey, tone) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const recommendations = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>menstruation: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>scientific: "Estrogen and progesterone are at their lowest. This can lead to fatigue and decreased energy. Physiological support and reduced demands are beneficial.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>easygoing: "She might be feeling tired or need some extra comfort. Offer a cozy blanket, a warm drink, or just some quiet time together. A little TLC goes a long way.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dude_mode: "Red flag week. She's basically a bear with a sore head. Keep chocolate supplies high, complaints low, and maybe offer to do the dishes without being asked. Survival mode: ON."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>follicular: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>scientific: "Rising estrogen levels typically correlate with increased energy and improved mood. Cognitive functions may also be enhanced during this phase.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>easygoing: "Energy's on the upswing! Good time to suggest fun activities or tackle that project you've been putting off together. She's likely feeling more positive.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dude_mode: "The storm has passed, sun's peeking out. She's probably in a decent mood. Don't mess it up. Maybe even suggest doing something *she* likes for a change."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>ovulation: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>scientific: "Peak estrogen and a surge in luteinizing hormone mark ovulation. Libido and sociability may be heightened. Testosterone also sees a slight increase.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>easygoing: "This is often when she's feeling her best – energetic, confident, and social. Great time for a date night or connecting with friends. Enjoy the vibe!",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dude_mode: "Alright, Casanova, this is your green light. She's biologically programmed to be more receptive. Send that flirty text. Compliment her. You know the drill... or you should by now. Go time!"</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'early-luteal': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>scientific: "Progesterone becomes the dominant hormone, which can have a calming effect. Estrogen is still present but declining from its peak.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>easygoing: "Moods may be stable. This can be a good time for calm, shared activities or deeper conversations. Continue open communication.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dude_mode: "Coast is relatively clear. Don't rock the boat. She's not peak-flirty, but probably not plotting your demise either. Maintain status quo, soldier."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>'late-luteal': {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>scientific: "Declining levels of estrogen and progesterone can lead to premenstrual symptoms, including mood swings, irritability, and fatigue.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>easygoing: "This can be a sensitive time. Be extra patient and understanding. Small gestures of kindness mean a lot. Offer support and listen if she needs to vent.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dude_mode: "Danger Zone! PMS approaching. Think of it like navigating a minefield in clown shoes. Avoid sudden movements, controversial topics, and for the love of all that's holy, don't ask 'Are you on your period?'. Just... be less annoying."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>},</p>
+<p class="p1"><span class="Apple-converted-space">                </span>default: {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>scientific: "Individual hormonal profiles and responses vary. Consistent tracking and open communication provide the most reliable insights.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>easygoing: "Open communication is always key. Ask how she's feeling and how you can be supportive.",</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dude_mode: "When in doubt, assume nothing and maybe bring snacks. Can't go too wrong with snacks."</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return recommendations[phaseClassKey]?.[tone] || recommendations.default[tone];</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateOutlookDateDisplay() {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const daysFromToday = parseInt(outlookDateSlider.value);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const targetDate = addDays(new Date(), daysFromToday);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>outlookDateDisplay.textContent = daysFromToday === 0 ? `Today (${formatDate(targetDate)})` : formatDate(targetDate);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateSetupAvatarPreview() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const tempAvatarConfig = {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>faceShape: faceShapeSelect.value, skinTone: skinToneInput.value,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>eyeColor: eyeColorInput.value, eyeShape: eyeShapeSelect.value,</p>
+<p class="p1"><span class="Apple-converted-space">                </span>lipShape: lipShapeSelect.value</p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const neutralMood = {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>eyeType: 'normal', mouthType: 'neutral', eyebrowType: 'normal',<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>lipColor: "#D87093", expressionLineColor: "#4B5563"<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>};</p>
+<p class="p1"><span class="Apple-converted-space">            </span>avatarPreviewSetupDiv.innerHTML = getFaceSVG(tempAvatarConfig, neutralMood);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function findAllPhaseDateOffsetsInRange(targetPhaseKey, rangeStartOffset, rangeEndOffset) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!currentLmpDate) return [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const offsets = [];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let today = new Date();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>today.setHours(0,0,0,0);<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>for (let i = rangeStartOffset; i &lt;= rangeEndOffset; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const futureDate = addDays(today, i);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const futureDateUTC = new Date(Date.UTC(futureDate.getFullYear(), futureDate.getMonth(), futureDate.getDate()));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const lmpDateUTC = new Date(Date.UTC(currentLmpDate.getFullYear(), currentLmpDate.getMonth(), currentLmpDate.getDate()));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (futureDateUTC &lt; lmpDateUTC) continue;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const diffTime = futureDateUTC.getTime() - lmpDateUTC.getTime();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const cycleLength = 28;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let cycleDay = diffDays % cycleLength;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (cycleDay === 0) cycleDay = cycleLength;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>let phaseKeyForDay = 'default';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (cycleDay &gt;= 1 &amp;&amp; cycleDay &lt;= 5) phaseKeyForDay = 'menstruation';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>else if (cycleDay &gt;= 6 &amp;&amp; cycleDay &lt;= 12) phaseKeyForDay = 'follicular';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>else if (cycleDay &gt;= 13 &amp;&amp; cycleDay &lt;= 15) phaseKeyForDay = 'ovulation';<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>else if (cycleDay &gt;= 16 &amp;&amp; cycleDay &lt;= 22) phaseKeyForDay = 'early-luteal';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>else if (cycleDay &gt;= 23 &amp;&amp; cycleDay &lt;= 28) phaseKeyForDay = 'late-luteal';<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (phaseKeyForDay === targetPhaseKey) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>offsets.push(i);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>return offsets;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function displaySliderHighlights(offsets, color, highlightGroupId) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>clearSliderHighlights(highlightGroupId);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const sliderMax = parseInt(outlookDateSlider.max);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const sliderMin = parseInt(outlookDateSlider.min);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const sliderWidth = outlookDateSlider.offsetWidth;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const PADDING = 10;<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>offsets.forEach(offset =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (offset &gt;= sliderMin &amp;&amp; offset &lt;= sliderMax) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const marker = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>marker.classList.add('highlight-marker');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>marker.dataset.highlightGroup = highlightGroupId;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>marker.style.backgroundColor = color;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const percentPosition = ((offset - sliderMin) / (sliderMax - sliderMin)) * 100;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const effectiveTrackWidth = sliderWidth - (2 * PADDING);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>const leftPosition = PADDING + (percentPosition / 100) * effectiveTrackWidth;</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>marker.style.left = `${leftPosition - 2}px`;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>marker.style.width = '4px';<span class="Apple-converted-space"> </span></p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>sliderHighlightTrack.appendChild(marker);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function clearSliderHighlights(highlightGroupId = null) {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const markers = sliderHighlightTrack.querySelectorAll('.highlight-marker');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>markers.forEach(marker =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!highlightGroupId || marker.dataset.highlightGroup === highlightGroupId) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>marker.remove();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateSuggestionCheckboxesVisibility() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentSuggestionTone === 'dude_mode') { // Changed from 'provocative'</p>
+<p class="p1"><span class="Apple-converted-space">                </span>suggestionCheckboxesContainer.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>suggestionCheckboxesContainer.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (dinnerDateCheckbox.checked) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>dinnerDateCheckbox.checked = false;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>clearSliderHighlights('dinnerDate');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (bizTripCheckbox.checked) {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>bizTripCheckbox.checked = false;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>clearSliderHighlights('bizTrip');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function updateOutlook() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!currentLmpDate) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const initialMood = { eyeType:'normal', mouthType:'neutral', eyebrowType:'normal', lipColor: "#D87093", expressionLineColor: "#4B5563"};</p>
+<p class="p1"><span class="Apple-converted-space">                </span>outputSection.className = 'text-center p-3 rounded-lg default-bg mb-3';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>smallThermometerDisplay.innerHTML = `&lt;div class="small-thermometer-icon"&gt;&lt;div class="small-thermometer-fill default-fill" style="height: 10%;"&gt;&lt;/div&gt;&lt;div class="small-thermometer-bulb default-fill"&gt;&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>avatarDisplay.innerHTML = getFaceSVG(currentAvatarConfig, initialMood);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseIconDisplay.innerHTML = cyclePhaseIcons.default;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>moodTextDisplay.innerHTML = `&lt;p class="text-slate-500 text-lg mt-2"&gt;Complete setup first.&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>userInfoHeaderDiv.innerHTML = `&lt;p&gt;Welcome to Hermometer!&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>recommendationTextDiv.textContent = "Complete setup to see tips.";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateGraphIndicator(1);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateSmallThermometerVisual('default', 1);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateSuggestionCheckboxesVisibility();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const outlookDaysOffset = parseInt(outlookDateSlider.value);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateOutlookDateDisplay();<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const baseOutlookDate = addDays(new Date(), outlookDaysOffset);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const baseOutlookDateUTC = new Date(Date.UTC(baseOutlookDate.getFullYear(), baseOutlookDate.getMonth(), baseOutlookDate.getDate()));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const finalDateToCalc = baseOutlookDateUTC;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const lmpDateUTC = new Date(Date.UTC(currentLmpDate.getFullYear(), currentLmpDate.getMonth(), currentLmpDate.getDate()));</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (finalDateToCalc &lt; lmpDateUTC) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const errorMood = { eyeType: 'sensitive', mouthType: 'sad', eyebrowType: 'furrowed', lipColor: "#D87093", expressionLineColor: currentAvatarConfig.eyeColor };</p>
+<p class="p1"><span class="Apple-converted-space">                </span>outputSection.className = 'text-center p-3 rounded-lg default-bg mb-3';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>smallThermometerDisplay.innerHTML = `&lt;div class="small-thermometer-icon"&gt;&lt;div class="small-thermometer-fill default-fill" style="height: 10%;"&gt;&lt;/div&gt;&lt;div class="small-thermometer-bulb default-fill"&gt;&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>avatarDisplay.innerHTML = getFaceSVG(currentAvatarConfig, errorMood);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseIconDisplay.innerHTML = cyclePhaseIcons.default;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>moodTextDisplay.innerHTML = `&lt;p class="text-slate-500 text-lg mt-2"&gt;Outlook date cannot be before LMP.&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>userInfoHeaderDiv.innerHTML = `&lt;p class="user-name"&gt;Outlook for ${currentUserName}&lt;/p&gt;&lt;p&gt;Invalid Date Selection&lt;/p&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>recommendationTextDiv.textContent = "Please select a date on or after the LMP.";</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateGraphIndicator(1);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateSmallThermometerVisual('default', 1);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>updateSuggestionCheckboxesVisibility();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const diffTime = finalDateToCalc.getTime() - lmpDateUTC.getTime();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24)) + 1;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cycleLength = 28;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>let currentCycleDay = diffDays % cycleLength;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentCycleDay === 0) currentCycleDay = cycleLength;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>userInfoHeaderDiv.innerHTML = `&lt;p&gt;&lt;span class="user-name"&gt;Outlook for ${currentUserName}&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Cycle Day: ${currentCycleDay} (on ${formatDate(finalDateToCalc)})&lt;/p&gt;`;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let phaseName = "Unknown", moodDescriptor = "Neutral",<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>moodExpressions = { eyeType: "normal", mouthType: "neutral", eyebrowType: "normal", lipColor: "#D87093", expressionLineColor: "#4B5563" },<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseClass = "default", phaseClassKey = 'default';</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const defaultExpressionColor = currentAvatarConfig.eyeColor ? currentAvatarConfig.eyeColor : "#4B5563";<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const defaultLipColor = "#E58C93";<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentCycleDay &gt;= 1 &amp;&amp; currentCycleDay &lt;= 5) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseName = "Menstruation"; moodDescriptor = "Rest &amp; Recharge";<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>moodExpressions = { eyeType: "sleepy", mouthType: "neutral", eyebrowType: "normal", lipColor: defaultLipColor, expressionLineColor: defaultExpressionColor };<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseClass = "menstruation"; phaseClassKey = 'menstruation';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (currentCycleDay &gt;= 6 &amp;&amp; currentCycleDay &lt;= 12) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseName = "Follicular Phase"; moodDescriptor = "Energy Building";<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>moodExpressions = { eyeType: "normal", mouthType: "smile", eyebrowType: "normal", lipColor: defaultLipColor, expressionLineColor: defaultExpressionColor };</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseClass = "follicular"; phaseClassKey = 'follicular';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (currentCycleDay &gt;= 13 &amp;&amp; currentCycleDay &lt;= 15) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseName = "Ovulation Window"; moodDescriptor = "Peak Energy &amp; Flirty";<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>moodExpressions = { eyeType: "sparkle", mouthType: "flirty", eyebrowType: "raised", lipColor: "#F06292", expressionLineColor: defaultExpressionColor };<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseClass = "ovulation"; phaseClassKey = 'ovulation';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (currentCycleDay &gt;= 16 &amp;&amp; currentCycleDay &lt;= 22) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseName = "Early Luteal Phase"; moodDescriptor = "Calm &amp; Steady";<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>moodExpressions = { eyeType: "normal", mouthType: "neutral", eyebrowType: "normal", lipColor: defaultLipColor, expressionLineColor: defaultExpressionColor };</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseClass = "early-luteal"; phaseClassKey = 'early-luteal';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else if (currentCycleDay &gt;= 23 &amp;&amp; currentCycleDay &lt;= 28) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseName = "Late Luteal Phase"; moodDescriptor = "Potential Sensitivity";<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>moodExpressions = { eyeType: "sensitive", mouthType: "sad", eyebrowType: "furrowed", lipColor: "#D37584", expressionLineColor: defaultExpressionColor };<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>phaseClass = "late-luteal"; phaseClassKey = 'late-luteal';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>outputSection.className = `text-center p-3 rounded-lg ${phaseClass}-bg mb-3`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>smallThermometerDisplay.innerHTML = `&lt;div class="small-thermometer-icon"&gt;&lt;div class="small-thermometer-fill"&gt;&lt;/div&gt;&lt;div class="small-thermometer-bulb"&gt;&lt;/div&gt;&lt;/div&gt;`;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>avatarDisplay.innerHTML = getFaceSVG(currentAvatarConfig, moodExpressions);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>phaseIconDisplay.innerHTML = cyclePhaseIcons[phaseClassKey] || cyclePhaseIcons.default;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>phaseIconDisplay.firstElementChild?.setAttribute('class', `${phaseClass}-text`);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>moodTextDisplay.innerHTML = `&lt;h2 class="text-lg font-semibold ${phaseClass}-text mb-0.5"&gt;${moodDescriptor}&lt;/h2&gt;&lt;p class="text-xs ${phaseClass}-text opacity-80 mb-0.5"&gt;${phaseName}&lt;/p&gt;`;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>recommendationTextDiv.textContent = getRecommendation(phaseClassKey, currentSuggestionTone);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateGraphIndicator(currentCycleDay);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateSmallThermometerVisual(phaseClassKey, currentCycleDay);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateSuggestionCheckboxesVisibility();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function renderAppIconChoices() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>appIconSelectionContainer.innerHTML = '';<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>Object.keys(appIcons).forEach(key =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const iconOptionDiv = document.createElement('div');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>iconOptionDiv.classList.add('app-icon-option');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>iconOptionDiv.dataset.iconKey = key;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>iconOptionDiv.innerHTML = appIcons[key];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (key === currentSelectedAppIconKey) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>iconOptionDiv.classList.add('selected');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>iconOptionDiv.addEventListener('click', () =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>document.querySelectorAll('.app-icon-option.selected').forEach(sel =&gt; sel.classList.remove('selected'));</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>iconOptionDiv.classList.add('selected');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>currentSelectedAppIconKey = key;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>});</p>
+<p class="p1"><span class="Apple-converted-space">                </span>appIconSelectionContainer.appendChild(iconOptionDiv);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>startTrackingBtn.addEventListener('click', () =&gt; {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const name = userNameInput.value.trim();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const lmpString = lmpDateSetupInput.value;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Suggestion tone is now read from mainSuggestionToneSelect when needed, or from localStorage on init</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// currentSelectedAppIconKey is updated when an icon is clicked in setup</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentAvatarConfig = {faceShape: faceShapeSelect.value, skinTone: skinToneInput.value, eyeColor: eyeColorInput.value, eyeShape: eyeShapeSelect.value, lipShape: lipShapeSelect.value};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!name || !lmpString) { alert("Please enter your name and LMP date."); return; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const lmpParts = lmpString.split('-'); const lmp = new Date(Date.UTC(parseInt(lmpParts[0]), parseInt(lmpParts[1]) - 1, parseInt(lmpParts[2])));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (isNaN(lmp.getTime())) { alert("Invalid LMP date format."); return; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const todayUTC = new Date(Date.UTC(new Date().getFullYear(), new Date().getMonth(), new Date().getDate()));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (lmp &gt; todayUTC) { alert("LMP date cannot be in the future."); return; }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentUserName = name; currentLmpDate = lmp;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// currentSuggestionTone is already set by its own select or loaded from localStorage</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('cycleMoodUserName', currentUserName);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('cycleMoodLmpDate', currentLmpDate.toISOString());<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// localStorage.setItem('cycleMoodSuggestionTone', currentSuggestionTone); // Saved by its own event listener</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('cycleMoodAvatarConfig', JSON.stringify(currentAvatarConfig));</p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('hermometerAppIconKey', currentSelectedAppIconKey);<span class="Apple-converted-space"> </span></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>appIconDisplay.innerHTML = appIcons[currentSelectedAppIconKey] || appIcons.h_meter;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>mainSuggestionToneSelect.value = currentSuggestionTone; // Ensure main screen tone selector matches</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>setupScreen.classList.add('hidden'); mainScreen.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>drawHormoneGraphBase(); updateOutlook();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>resetSetupBtn.addEventListener('click', () =&gt; {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>mainScreen.classList.add('hidden'); setupScreen.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>userNameInput.value = currentUserName; lmpDateSetupInput.value = currentLmpDate ? currentLmpDate.toISOString().split('T')[0] : '';<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// mainSuggestionToneSelect.value is already on the main screen and reflects currentSuggestionTone</p>
+<p class="p1"><span class="Apple-converted-space">            </span>faceShapeSelect.value = currentAvatarConfig.faceShape; skinToneInput.value = currentAvatarConfig.skinTone; eyeColorInput.value = currentAvatarConfig.eyeColor; eyeShapeSelect.value = currentAvatarConfig.eyeShape; lipShapeSelect.value = currentAvatarConfig.lipShape;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderAppIconChoices();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const currentIconOption = appIconSelectionContainer.querySelector(`.app-icon-option[data-icon-key="${currentSelectedAppIconKey}"]`);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (currentIconOption) currentIconOption.classList.add('selected');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>else {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>const defaultIconOption = appIconSelectionContainer.querySelector(`.app-icon-option[data-icon-key="h_meter"]`);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (defaultIconOption) defaultIconOption.classList.add('selected');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateSetupAvatarPreview();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>outlookDateSlider.addEventListener('input', updateOutlook);</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>dinnerDateCheckbox.addEventListener('change', function() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (this.checked) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if(bizTripCheckbox.checked) { bizTripCheckbox.checked = false; clearSliderHighlights('bizTrip'); }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const offsets = findAllPhaseDateOffsetsInRange('ovulation', 0, parseInt(outlookDateSlider.max));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log('Dinner date (ovulation) offsets:', offsets);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>displaySliderHighlights(offsets, 'rgba(236, 72, 153, 0.7)', 'dinnerDate');<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>clearSliderHighlights('dinnerDate');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>bizTripCheckbox.addEventListener('change', function() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (this.checked) {</p>
+<p class="p1"><span class="Apple-converted-space">                 </span>if(dinnerDateCheckbox.checked) { dinnerDateCheckbox.checked = false; clearSliderHighlights('dinnerDate'); }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const offsets = findAllPhaseDateOffsetsInRange('late-luteal', 0, parseInt(outlookDateSlider.max));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>console.log('Biz trip (late-luteal) offsets:', offsets);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>displaySliderHighlights(offsets, 'rgba(245, 158, 11, 0.7)', 'bizTrip');<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>clearSliderHighlights('bizTrip');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>[faceShapeSelect, skinToneInput, eyeColorInput, eyeShapeSelect, lipShapeSelect].forEach(el =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>el.addEventListener('input', updateSetupAvatarPreview);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>el.addEventListener('change', updateSetupAvatarPreview);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><span class="Apple-converted-space">        </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>mainSuggestionToneSelect.addEventListener('change', () =&gt; { // Listener for tone select on main screen</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentSuggestionTone = mainSuggestionToneSelect.value;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>localStorage.setItem('cycleMoodSuggestionTone', currentSuggestionTone); // Save new tone</p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateOutlook(); // This will update recommendations and checkbox visibility</p>
+<p class="p1"><span class="Apple-converted-space">        </span>});</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>function initializeApp() {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>const savedName = localStorage.getItem('cycleMoodUserName'); const savedLmpString = localStorage.getItem('cycleMoodLmpDate'); const savedTone = localStorage.getItem('cycleMoodSuggestionTone'); const savedAvatarConfigString = localStorage.getItem('cycleMoodAvatarConfig');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentSelectedAppIconKey = localStorage.getItem('hermometerAppIconKey') || 'h_meter';<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>currentSuggestionTone = savedTone || 'easygoing'; // Load tone here for main screen selector</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (savedName &amp;&amp; savedLmpString) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentUserName = savedName; currentLmpDate = new Date(savedLmpString);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (savedAvatarConfigString) { currentAvatarConfig = JSON.parse(savedAvatarConfigString); delete currentAvatarConfig.hairColor; delete currentAvatarConfig.hairStyle; }</p>
+<p class="p1"><span class="Apple-converted-space">                </span>userNameInput.value = currentUserName; lmpDateSetupInput.value = currentLmpDate.toISOString().split('T')[0];<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Set the tone selector on the main screen</p>
+<p class="p1"><span class="Apple-converted-space">                </span>mainSuggestionToneSelect.value = currentSuggestionTone;<span class="Apple-converted-space"> </span></p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>faceShapeSelect.value = currentAvatarConfig.faceShape || 'oval'; skinToneInput.value = currentAvatarConfig.skinTone || '#F0C0A0'; eyeColorInput.value = currentAvatarConfig.eyeColor || '#5080C0'; eyeShapeSelect.value = currentAvatarConfig.eyeShape || 'almond'; lipShapeSelect.value = currentAvatarConfig.lipShape || 'natural';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setupScreen.classList.add('hidden'); mainScreen.classList.remove('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>drawHormoneGraphBase();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setupScreen.classList.remove('hidden'); mainScreen.classList.add('hidden');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>mainSuggestionToneSelect.value = 'easygoing'; // Default for new users on main screen</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if (!lmpDateSetupInput.value) { const twoWeeksAgo = addDays(new Date(), -14); lmpDateSetupInput.value = twoWeeksAgo.toISOString().split('T')[0]; }</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>renderAppIconChoices();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(appIconDisplay) appIconDisplay.innerHTML = appIcons[currentSelectedAppIconKey] || appIcons.h_meter;<span class="Apple-converted-space"> </span></p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>updateSetupAvatarPreview(); updateOutlook();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>initializeApp();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
